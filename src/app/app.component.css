@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 24px;
+  }
+  
+  .navbar .navbar-menu {
+    float: right;
+  }
+  
+  .navbar .btn {
+    margin-top: 5px;
+  }
+  

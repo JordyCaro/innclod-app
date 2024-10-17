@@ -1,0 +1,17 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <a routerLink="/" class="navbar-brand">Gestión de Proyectos</a>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button
+      *ngIf="isAuthenticated()"
+      pButton
+      label="Cerrar Sesión"
+      icon="pi pi-power-off"
+      (click)="logout()"
+      class="p-button-danger"
+    ></button>
+  </ng-template>
+</p-menubar>
+
+<router-outlet></router-outlet>

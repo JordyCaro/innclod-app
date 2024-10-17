@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   {
-    path: '',
+    path: 'login',
     loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthModule),
   },
@@ -11,18 +13,15 @@ const routes: Routes = [
     path: 'projects',
     loadChildren: () =>
       import('./projects/projects.module').then((m) => m.ProjectsModule),
-    //canActivate: [AuthGuard], esto se puede colocar despues
+    //canActivate: [AuthGuard],
   },
   {
     path: 'tasks',
     loadChildren: () =>
       import('./tasks/tasks.module').then((m) => m.TasksModule),
-    //canActivate: [AuthGuard], esto se peude coloar despues
+    //canActivate: [AuthGuard],
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

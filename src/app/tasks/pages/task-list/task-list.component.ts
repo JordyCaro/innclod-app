@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
-
-
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-task-list',
@@ -20,12 +18,14 @@ export class TaskListComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private router: Router,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.projectId = +params['projectId'];
+      console.log(this.projectId);
       if (this.projectId) {
         this.loadTasks(this.projectId);
       }
@@ -45,6 +45,7 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+
   createTask(): void {
     this.router.navigate(['/tasks/create'], {
       queryParams: { projectId: this.projectId },
@@ -71,7 +72,12 @@ export class TaskListComponent implements OnInit {
   deleteTask(taskId: number): void {
     this.taskService.deleteTask(taskId).subscribe(
       () => {
-        this.tasks = this.tasks.filter((t) => t.id !== taskId);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Tarea Eliminada',
+          detail: 'La tarea ha sido eliminada exitosamente',
+        });
+        this.loadTasks(this.projectId!);
       },
       (error) => {
         console.error('Error al eliminar la tarea', error);

@@ -10,7 +10,11 @@ import { RouterModule } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent],
@@ -22,8 +26,20 @@ import { HttpClientModule } from '@angular/common/http';
       CardModule,
       ButtonModule,
       HttpClientModule,
+      BrowserModule,
+      BrowserAnimationsModule,  
+      ToastModule,
     ],
-    providers: [AuthService, AuthGuard],
+    providers: [
+      AuthService, 
+      AuthGuard,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpErrorInterceptor,
+        multi: true,
+      },
+      MessageService,
+    ],
     bootstrap: [AppComponent],
   })
   export class AppModule {}

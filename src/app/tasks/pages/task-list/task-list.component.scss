@@ -1,0 +1,52 @@
+.task-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .task-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .task-table td {
+    padding: 15px;
+  }
+  
+  .task-checkbox {
+    margin-left: 10px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .button-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .p-button {
+    min-width: 35px;
+  }
+  

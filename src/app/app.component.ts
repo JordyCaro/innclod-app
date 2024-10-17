@@ -9,7 +9,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'project-management-app';
+  title = 'innclod-app';
   items: MenuItem[] | undefined;
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -17,15 +17,9 @@ export class AppComponent {
   ngOnInit() {
     this.items = [
       {
-        label: 'Proyectos',
+        label: 'inicio',
         icon: 'pi pi-fw pi-briefcase',
         routerLink: '/projects',
-        visible: this.isAuthenticated(),
-      },
-      {
-        label: 'Tareas',
-        icon: 'pi pi-fw pi-check-square',
-        routerLink: '/tasks',
         visible: this.isAuthenticated(),
       },
     ];

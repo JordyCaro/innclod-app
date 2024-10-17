@@ -1,36 +1,57 @@
-   <p-confirmDialog></p-confirmDialog>
-<p-button
-label="Crear Proyecto"
-icon="pi pi-plus"
-styleClass="p-button-success"
-(click)="createProject()"
-></p-button>
 
-<div class="card-container">
-<p-card
-  *ngFor="let project of projects"
-  header="{{ project.title }}"
-  class="project-card"
->
-  <p>{{ project.description }}</p>
-  <p-footer>
-    <p-button
-      label="Ver Tareas"
-      icon="pi pi-list"
-      (click)="viewTasks(project.id)"
-    ></p-button>
-    <p-button
-      label="Editar"
-      icon="pi pi-pencil"
-      styleClass="p-button-warning"
-      (click)="editProject(project.id)"
-    ></p-button>
-    <p-button
-    label="Eliminar"
-    icon="pi pi-trash"
-    styleClass="p-button-danger"
-    (click)="confirmDeleteProject(project.id)"
-  ></p-button>
-  </p-footer>
-</p-card>
-</div>
+<p-confirmDialog></p-confirmDialog>
+  <div class="project-list-container">
+    <h2 class="project-list-title">Acá podrás ver una lista de todos los proyectos</h2>
+    <div class="card-container">
+      <p-card *ngFor="let project of projects" class="project-card">
+        <div class="header-content">
+          <h2>{{ project.name }}</h2>
+        </div>
+        <div class="button-container">
+          <div class="action-buttons">
+            <p-button
+              label=""
+              icon="pi pi-pencil"
+              styleClass="p-button-warning"
+              (click)="editProject(project.id)"
+            ></p-button>
+            <p-button
+              label=""
+              icon="pi pi-trash"
+              styleClass="p-button-danger"
+              (click)="confirmDeleteProject(project.id)"
+            ></p-button>
+          </div>
+        </div>
+        <img src="https://img.freepik.com/fotos-premium/icono-usuario-marca-marca_1255023-23188.jpg?size=338&ext=jpg&ga=GA1.1.933601817.1722816000&semt=ais_hybrid" alt="{{ project.name }}" class="project-image" />
+        <div class="project-info">
+          <p><strong>Usuario:</strong> {{ project.username }}</p>
+          <p><strong>Email:</strong> {{ project.email }}</p>
+          <p><strong>Teléfono:</strong> {{ project.phone }}</p>
+          <p><strong>Sitio web:</strong> <a href="https://{{ project.website }}" target="_blank">{{ project.website }}</a></p>
+          <br />
+          <p><strong>Compañía:</strong> {{ project.company.name }}</p>
+          <p>"{{ project.company.catchPhrase }}"</p>        
+          <p><em>{{ project.company.bs }}</em></p>      
+        </div>
+        <p-footer>
+          <div class="footer-button-container">
+            <p-button
+              label="Ver Tareas"
+              icon="pi pi-list"
+              (click)="viewTasks(project.id)"
+              styleClass="tareas-button"
+            ></p-button>
+          </div>
+        </p-footer>
+      </p-card>
+    </div>
+    <div class="create-project-button-container">
+      <p-button
+        label="Crear Proyecto"
+        icon="pi pi-plus"
+        styleClass="p-button-success create-project-button"
+        (click)="createProject()"
+      ></p-button>
+    </div>
+  </div>

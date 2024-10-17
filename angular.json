@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "project-management-app": {
+    "innclod-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/project-management-app",
+            "outputPath": "dist/innclod-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "project-management-app:build:production"
+              "buildTarget": "innclod-app:build:production"
             },
             "development": {
-              "buildTarget": "project-management-app:build:development"
+              "buildTarget": "innclod-app:build:development"
             }
           },
           "defaultConfiguration": "development"

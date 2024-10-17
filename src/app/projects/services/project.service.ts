@@ -4,14 +4,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Project } from '../models/project.model';
 import { Observable, of, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/users';//
-  // private apiUrl = 'https://jsonplaceholder.typicode.com/invalid-endpoint';
-
+  private apiUrl = `${environment.apiUrl}/users`;
   private projects: Project[] = [];
 
   constructor(private http: HttpClient) {}
@@ -24,8 +23,26 @@ export class ProjectService {
         map((users) =>
           users.map((user) => ({
             id: user.id,
-            title: user.company.name,
-            description: user.company.catchPhrase,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            address: {
+              street: user.address.street,
+              suite: user.address.suite,
+              city: user.address.city,
+              zipcode: user.address.zipcode,
+              geo: {
+                lat: user.address.geo.lat,
+                lng: user.address.geo.lng,
+              },
+            },
+            phone: user.phone,
+            website: user.website,
+            company: {
+              name: user.company.name,
+              catchPhrase: user.company.catchPhrase,
+              bs: user.company.bs,
+            },
           }))
         ),
         map((projects) => {
@@ -41,7 +58,6 @@ export class ProjectService {
     if (project) {
       return of(project);
     } else {
-      // Simulamos un error HTTP 404
       return throwError(
         () =>
           new HttpErrorResponse({
@@ -69,8 +85,8 @@ export class ProjectService {
     }
   }
 
-  deleteProject(id: number): Observable<void> {
+  deleteProject(id: number): Observable<Project[]> {
     this.projects = this.projects.filter((p) => p.id !== id);
-    return of();
+    return of(this.projects);
   }
 }

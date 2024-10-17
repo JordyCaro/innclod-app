@@ -17,8 +17,19 @@ export class ProjectFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectForm = this.fb.group({
-      title: [this.project?.title || '', Validators.required],
-      description: [this.project?.description || ''],
+      name: [this.project?.name || '', Validators.required],
+      username: [this.project?.username || '', Validators.required], 
+      email: [
+        this.project?.email || '',
+        [Validators.required, Validators.email],
+      ],
+      phone: [this.project?.phone || '', Validators.required],
+      website: [
+        this.project?.website || '',
+      ],
+      company: [this.project?.company.name || '', Validators.required],
+      catchPhrase: [this.project?.company.catchPhrase || '', Validators.required], 
+      bs: [this.project?.company.bs || '', Validators.required], 
     });
   }
 
@@ -27,16 +38,22 @@ export class ProjectFormComponent implements OnInit {
       const newProject: Project = {
         ...this.project,
         ...this.projectForm.value,
+        company:{
+          bs:this.projectForm.value.bs,
+          catchPhrase:this.projectForm.value.catchPhrase,
+          name:this.projectForm.value.name,
+        }
       };
       this.formSubmit.emit(newProject);
+      console.log(this.projectForm.value.bs)
     }
   }
 
-  get title() {
-    return this.projectForm.get('title');
+  get name() {
+    return this.projectForm.get('name');
   }
-  
-  get description() {
-    return this.projectForm.get('description');
+
+  get email() {
+    return this.projectForm.get('email');
   }
 }

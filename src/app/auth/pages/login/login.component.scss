@@ -1,24 +1,80 @@
-.login-card {
-  max-width: 400px;
-  margin: 50px auto;
-  display: block;
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.login-container {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  height: 89vh;
+  background-color: #e0e0e0;
+}
 
-  .p-field {
-    margin-bottom: 20px;
+.login-card {
+  width: 450px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
+.logo-container {
+  margin-bottom: 20px;
+}
 
-    input.ng-invalid.ng-touched,
-    input.ng-invalid.ng-dirty {
-      border-color: #d32f2f;
-    }
-  }
+.login-logo {
+  max-width: 120px;
+}
 
-  .login-button {
-    width: 100%;
-  }
+.login-header {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.p-field {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.p-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.login-button {
+  width: 70%;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.button-icon {
+  margin-right: 10px;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  margin-top: 20px;
 }

@@ -9,7 +9,7 @@ export class AuthService {
   constructor() {}
 
   login(username: string, password: string): boolean {
-    if (username === 'admin' && password === 'admin') {
+    if (username === 'jordy' && password === 'innclod') {
       localStorage.setItem(this.AUTH_KEY, 'true');
       return true;
     } else {

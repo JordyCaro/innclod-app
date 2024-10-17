@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 import { Router } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-project-list',
@@ -16,13 +16,15 @@ export class ProjectListComponent implements OnInit {
   constructor(
     private projectService: ProjectService, 
     private router: Router, 
-    private confirmationService: ConfirmationService) {}
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.projectService.getProjects().subscribe(
       (projects) => {
         this.projects = projects;
+        console.log(projects)
         this.loading = false;
       },
       (error) => {
@@ -47,6 +49,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   confirmDeleteProject(projectId: number): void {
+    console.log('entro al eliminar');
     this.confirmationService.confirm({
       message: '¿Estás seguro de que deseas eliminar este proyecto?',
       header: 'Confirmar Eliminación',
@@ -58,9 +61,15 @@ export class ProjectListComponent implements OnInit {
   }
 
   deleteProject(projectId: number): void {
+    console.log('empezar a eliminar');
     this.projectService.deleteProject(projectId).subscribe(
-      () => {
-        this.projects = this.projects.filter((p) => p.id !== projectId);
+      (projects) => {
+        this.projects = projects
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Proyecto Eliminado',
+          detail: 'El proyecto ha sido eliminado exitosamente',
+        });
       },
       (error) => {
         console.error('Error al eliminar el proyecto', error);

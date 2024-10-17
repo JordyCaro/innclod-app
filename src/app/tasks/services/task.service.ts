@@ -3,16 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Task, ResponseTask } from '../models/task.model';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+  private apiUrl = `${environment.apiUrl}/todos`;
   private tasks: Task[] = [];
 
   constructor(private http: HttpClient) {}
+
+  private getUrl(endpoint: string): string {
+    return `${this.apiUrl}/${endpoint}`;
+  }
 
   getTasksByProjectId(projectId: number): Observable<Task[]> {
     if (this.tasks.length > 0) {
@@ -56,9 +61,9 @@ export class TaskService {
     }
   }
 
-    deleteTask(id: number): Observable<void> {
+  deleteTask(id: number): Observable<Task[]> {
     this.tasks = this.tasks.filter((t) => t.id !== id);
-    return of();
+    return of(this.tasks);
   }
 }
 

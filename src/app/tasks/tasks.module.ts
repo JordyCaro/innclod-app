@@ -17,7 +17,8 @@ import { TaskEditComponent } from './pages/task-edit/task-edit.component';
 import { TaskCreateComponent } from './pages/task-create/task-create.component';
 import { CardModule } from 'primeng/card';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [TaskListComponent, TaskFormComponent, TaskCreateComponent, TaskEditComponent],

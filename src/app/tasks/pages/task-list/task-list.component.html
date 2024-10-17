@@ -1,18 +1,15 @@
 <p-progressSpinner *ngIf="loading"></p-progressSpinner>
 <p-confirmDialog></p-confirmDialog>
-<div *ngIf="!loading">
-    <p-button
-  label="Crear Tarea"
-  icon="pi pi-plus"
-  styleClass="p-button-success"
-  (click)="createTask()"
-></p-button>
-  <p-table [value]="tasks">
+
+<div *ngIf="!loading" class="task-container">
+
+  <p-table [value]="tasks" class="task-table">
     <ng-template pTemplate="header">
       <tr>
         <th>ID</th>
         <th>Título</th>
         <th>Estado</th>
+        <th>Acciones</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-task>
@@ -24,34 +21,30 @@
             [binary]="true"
             [(ngModel)]="task.completed"
             [disabled]="true"
+            class="task-checkbox"
           ></p-checkbox>
         </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-task>
-        <tr>
-          <td>{{ task.id }}</td>
-          <td>{{ task.title }}</td>
-          <td>
-            <p-checkbox
-              [binary]="true"
-              [(ngModel)]="task.completed"
-              [disabled]="true"
-            ></p-checkbox>
-          </td>
-          <td>
-            <p-button
-              icon="pi pi-pencil"
-              styleClass="p-button-warning"
-              (click)="editTask(task.id)"
-            ></p-button>
-            <p-button
+        <td class="action-buttons">
+          <p-button
+            icon="pi pi-pencil"
+            styleClass="p-button-warning"
+            (click)="editTask(task.id)"
+          ></p-button>
+          <p-button
             icon="pi pi-trash"
             styleClass="p-button-danger"
             (click)="confirmDeleteTask(task.id)"
           ></p-button>
-          </td>
-        </tr>
-      </ng-template>
+        </td>
+      </tr>
+    </ng-template>
   </p-table>
+  <div class="task-header">
+    <p-button
+      label="Crear Tarea"
+      icon="pi pi-plus"
+      styleClass="p-button-success"
+      (click)="createTask()"
+    ></p-button>
+  </div>
 </div>

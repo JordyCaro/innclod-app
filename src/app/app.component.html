@@ -1,17 +1,24 @@
-<p-menubar [model]="items">
-  <ng-template pTemplate="start">
-    <a routerLink="/" class="navbar-brand">Gestión de Proyectos</a>
-  </ng-template>
-  <ng-template pTemplate="end">
-    <button
-      *ngIf="isAuthenticated()"
-      pButton
-      label="Cerrar Sesión"
-      icon="pi pi-power-off"
-      (click)="logout()"
-      class="p-button-danger"
-    ></button>
-  </ng-template>
-</p-menubar>
+<p-toast></p-toast>
 
-<router-outlet></router-outlet>
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <img 
+      src="https://s3-eu-west-1.amazonaws.com/tpd/logos/6100288620d1cf000187bfaa/0x0.png" 
+      alt="Logo"
+      style="height: 30px; margin-right: 5px;" 
+    />
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div style="display: flex; align-items: center;">
+        <button
+          *ngIf="isAuthenticated()"
+          pButton
+          label=""
+          icon="pi pi-power-off"
+          (click)="logout()"
+          class="p-button-danger"
+        ></button>
+      </div>
+    </ng-template>
+  </p-menubar>
+  <router-outlet></router-outlet>

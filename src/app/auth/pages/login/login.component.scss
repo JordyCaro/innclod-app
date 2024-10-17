@@ -1,0 +1,81 @@
+/* Aplica un fondo gris a toda la pantalla */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 89vh; /* Altura completa de la pantalla */
+  background-color: #e0e0e0; /* Color gris del fondo */
+}
+
+.login-card {
+  width: 450px; /* Card más grande */
+  padding: 30px; /* Espaciado interno */
+  background-color: #ffffff; /* Fondo blanco para el card */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  text-align: center; /* Centrar contenido dentro del card */
+}
+
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.login-logo {
+  max-width: 120px;
+}
+
+.login-header {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 25px; /* Espacio debajo del título */
+}
+
+.p-field {
+  margin-bottom: 20px;
+  text-align: left; /* Para que las etiquetas y los inputs no estén centrados */
+}
+
+.p-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.login-button {
+  width: 70%;
+  background-color: #007bff; /* Color de fondo */
+  color: white; /* Color del texto */
+  font-weight: bold; /* Negrita */
+  padding: 10px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  transition: background-color 0.3s; /* Transición suave */
+}
+
+.button-icon {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Color al pasar el mouse */
+}
+
+.error-message {
+  margin-top: 20px;
+}

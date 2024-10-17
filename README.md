@@ -1,6 +1,6 @@
 # **Gestión de Proyectos y Tareas**
 
-Esta es una aplicación de gestión de proyectos y tareas, construida con **Angular** y utilizando varias librerías como **PrimeNG** para componentes de UI, **RxJS** para la gestión de estados asíncronos y **@auth0/angular-jwt** para la autenticación con JWT. La aplicación permite crear, editar, eliminar y visualizar proyectos y tareas, además de manejar la autenticación y protección de rutas para usuarios autenticados.
+Esta es una aplicación de gestión de proyectos y tareas, construida con **Angular** y utilizando varias librerías como **PrimeNG** para componentes de UI, **RxJS** para la gestión de estados asíncronos. La aplicación permite crear, editar, eliminar y visualizar proyectos y tareas, además de manejar la autenticación y protección de rutas para usuarios autenticados.
 
 ## **Tabla de Contenidos**
 
@@ -38,22 +38,20 @@ Sigue estos pasos para instalar y ejecutar la aplicación en tu entorno local.
 
    Clona el repositorio del proyecto a tu máquina local.
 
-
-   Clona el repositorio del proyecto a tu máquina local.
       ```bash
    git clone https://github.com/JordyCaro/innclod-app.git
 
 2. **Navegar al Directorio del Proyecto:**
 
    Dirígete al directorio donde clonaste el repositorio.
-         ```bash
+      ```bash
    cd innclod-app
 
 3. **Instalar las Dependencias:**
 
    Ejecuta el siguiente comando para instalar todas las dependencias necesarias:
-         ```bash
-   `npm install`
+      ```bash
+   npm install
 
 4. **Configuración de Variables de Entorno:**
 
@@ -62,8 +60,8 @@ Sigue estos pasos para instalar y ejecutar la aplicación en tu entorno local.
 ## **Ejecución del Proyecto**
 
 Una vez instaladas las dependencias, puedes ejecutar la aplicación con el siguiente comando:
-         ```bash
-`ng serve`
+      ```bash
+   ng serve
 
 Esto iniciará la aplicación y estará disponible en `http://localhost:4200/`.
 

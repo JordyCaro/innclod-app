@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent],
@@ -20,6 +21,7 @@ import { ButtonModule } from 'primeng/button';
       MenubarModule,
       CardModule,
       ButtonModule,
+      HttpClientModule,
     ],
     providers: [AuthService, AuthGuard],
     bootstrap: [AppComponent],

@@ -1,0 +1,13 @@
+<p-card *ngFor="let project of projects" class="project-card">
+  <ng-template pTemplate="header">
+    <div class="header-content">
+      <span>{{ project.title }}</span>
+    </div>
+  </ng-template>
+  <p>{{ project.description }}</p>
+  <ng-template pTemplate="footer">
+    <p-button label="Ver Detalles" icon="pi pi-info-circle"></p-button>
+  </ng-template>
+</p-card>
+
+<p-progressSpinner *ngIf="loading"></p-progressSpinner>

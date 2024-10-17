@@ -14,6 +14,8 @@ import { MessagesModule } from 'primeng/messages';
 import { ProjectFormComponent } from './components/project-form/project-form.component';
 import { ProjectEditComponent } from './pages/project-edit/project-edit.component';
 import { ProjectCreateComponent } from './pages/project-create/project-create.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProjectCreateComponent } from './pages/project-create/project-create.co
     InputTextareaModule,
     MessageModule,
     MessagesModule,
+    ConfirmDialogModule,
   ],
+  providers: [ConfirmationService],
   exports: [ProjectFormComponent],
 })
 export class ProjectsModule {}

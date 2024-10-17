@@ -55,6 +55,10 @@ export class TaskService {
       return of(null);
     }
   }
-  
+
+    deleteTask(id: number): Observable<void> {
+    this.tasks = this.tasks.filter((t) => t.id !== id);
+    return of();
+  }
 }
 

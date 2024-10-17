@@ -45,7 +45,11 @@
               styleClass="p-button-warning"
               (click)="editTask(task.id)"
             ></p-button>
-            
+            <p-button
+            icon="pi pi-trash"
+            styleClass="p-button-danger"
+            (click)="confirmDeleteTask(task.id)"
+          ></p-button>
           </td>
         </tr>
       </ng-template>

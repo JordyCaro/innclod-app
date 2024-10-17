@@ -20,6 +20,7 @@ export class TaskListComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private router: Router,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +55,27 @@ export class TaskListComponent implements OnInit {
     this.router.navigate(['/tasks/edit', taskId], {
       queryParams: { projectId: this.projectId },
     });
+  }
+
+  confirmDeleteTask(taskId: number): void {
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que deseas eliminar esta tarea?',
+      header: 'Confirmar Eliminación',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.deleteTask(taskId);
+      },
+    });
+  }
+
+  deleteTask(taskId: number): void {
+    this.taskService.deleteTask(taskId).subscribe(
+      () => {
+        this.tasks = this.tasks.filter((t) => t.id !== taskId);
+      },
+      (error) => {
+        console.error('Error al eliminar la tarea', error);
+      }
+    );
   }
 }

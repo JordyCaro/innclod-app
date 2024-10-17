@@ -1,0 +1,36 @@
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  <div class="p-field">
+    <label for="title">Título</label>
+    <input
+      id="title"
+      type="text"
+      pInputText
+      formControlName="title"
+      [class.ng-invalid]="title?.invalid && (title?.dirty || title?.touched)"
+      [class.ng-valid]="title?.valid && (title?.dirty || title?.touched)"
+    />
+    <p-message
+      *ngIf="title?.invalid && (title?.dirty || title?.touched)"
+      severity="error"
+      text="El título es requerido"
+    ></p-message>
+  </div>
+
+  <div class="p-field">
+    <label for="description">Descripción</label>
+    <textarea
+      id="description"
+      pInputTextarea
+      formControlName="description"
+      rows="5"
+      cols="30"
+    ></textarea>
+  </div>
+
+  <p-button
+    label="Guardar"
+    icon="pi pi-save"
+    type="submit"
+    [disabled]="projectForm.invalid"
+  ></p-button>
+</form>

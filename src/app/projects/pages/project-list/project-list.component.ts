@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -11,7 +12,7 @@ export class ProjectListComponent implements OnInit {
   projects: Project[] = [];
   loading: boolean = false;
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -25,5 +26,19 @@ export class ProjectListComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  viewTasks(projectId: number): void {
+    this.router.navigate(['/tasks'], {
+      queryParams: { projectId: projectId },
+    });
+  }
+
+  createProject(): void {
+    this.router.navigate(['/projects/create']);
+  }
+
+  editProject(projectId: number): void {
+    this.router.navigate(['/projects/edit', projectId]);
   }
 }

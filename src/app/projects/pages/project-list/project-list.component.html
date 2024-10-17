@@ -1,13 +1,30 @@
-<p-card *ngFor="let project of projects" class="project-card">
-  <ng-template pTemplate="header">
-    <div class="header-content">
-      <span>{{ project.title }}</span>
-    </div>
-  </ng-template>
-  <p>{{ project.description }}</p>
-  <ng-template pTemplate="footer">
-    <p-button label="Ver Detalles" icon="pi pi-info-circle"></p-button>
-  </ng-template>
-</p-card>
-
-<p-progressSpinner *ngIf="loading"></p-progressSpinner>
+  <p-button
+  label="Crear Proyecto"
+  icon="pi pi-plus"
+  styleClass="p-button-success"
+  (click)="createProject()"
+  ></p-button>
+  
+  <div class="card-container">
+  <p-card
+    *ngFor="let project of projects"
+    header="{{ project.title }}"
+    class="project-card"
+  >
+    <p>{{ project.description }}</p>
+    <p-footer>
+      <p-button
+        label="Ver Tareas"
+        icon="pi pi-list"
+        (click)="viewTasks(project.id)"
+      ></p-button>
+      <p-button
+        label="Editar"
+        icon="pi pi-pencil"
+        styleClass="p-button-warning"
+        (click)="editProject(project.id)"
+      ></p-button>
+    </p-footer>
+  </p-card>
+  </div>
+  

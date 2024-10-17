@@ -1,0 +1,12 @@
+.p-field,
+.p-field-checkbox {
+  margin-bottom: 20px;
+
+  label {
+    margin-left: 5px;
+  }
+
+  .ng-invalid.ng-touched {
+    border-color: #d32f2f;
+  }
+}

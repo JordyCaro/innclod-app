@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
+
+
 
 @Component({
   selector: 'app-task-list',
@@ -15,7 +18,8 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -39,5 +43,16 @@ export class TaskListComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+  createTask(): void {
+    this.router.navigate(['/tasks/create'], {
+      queryParams: { projectId: this.projectId },
+    });
+  }
+
+  editTask(taskId: number): void {
+    this.router.navigate(['/tasks/edit', taskId], {
+      queryParams: { projectId: this.projectId },
+    });
   }
 }
